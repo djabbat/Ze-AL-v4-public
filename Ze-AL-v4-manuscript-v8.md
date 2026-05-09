@@ -102,10 +102,6 @@ Pre‑registered power analysis: with $n=200$ distinct subjects, sampling error 
 
 Power exceeds 95% for any meaningful effect ($r \geq 0.25$). Sample size of 200 was pre‑registered [1] before any data run.
 
-### 2.8 Multi-seed sensitivity analysis
-
-To address the concern that single‑seed simulation could produce results contingent on a particular RNG state (cf. Red Team review of v8), we generated 10 independent cohorts using seeds = 20260509 + i × 100000 for i = 0..9 (i.e., 20260509, 20360509, 20460509, ..., 21160509). Each seed produced an independent 200‑subject cohort with all stochastic components (subject events, amplitudes, predictability flags, channel coupling jitter, observation noise) regenerated. We then computed each estimator under three critical conditions (primary, calibration contamination 10%, calibration contamination 30%) and report distribution statistics (mean ± SD, range) across the 10 seeds. The analysis is limited to five estimators (traditional, MA‑residual, v3 σ_E, v4 σ_calib, v4 Mahalanobis) because v4 VFE produced numerically identical results to Mahalanobis in the main analysis. This multi‑seed extension is explicitly exploratory and was added post‑hoc to the registered protocol (see Code & Data Availability).
-
 ---
 
 ## 3. Results
@@ -161,18 +157,6 @@ All results are presented in Tables 1–3. Figure 1 (not shown in this text) pro
 | Contamination 30%     | 0.166 [−0.008–0.342] | −0.143 [−0.272–−0.010] | 0.178 [0.040–0.308] | 0.207 [0.080–0.328] | 0.207 [0.085–0.334] | 0.207 [0.085–0.334] |
 | Antagonistic channels | 0.174 [0.047–0.296] | 0.050 [−0.079–0.185] | 0.211 [0.085–0.335] | 0.212 [0.085–0.336] | 0.252 [0.125–0.369] | 0.252 [0.125–0.369] |
 
-### 3.2 Multi-seed sensitivity
-
-To assess the robustness of our findings to the choice of random seed, we repeated the primary analysis across 10 independent seeds (see Methods 2.8). Table 4 reports the distribution of $r_{\text{burden}}$ across seeds for three critical conditions. Under primary conditions, standard deviations were below 0.01 for all estimators (e.g., v4 $\sigma_{\text{calib}}$: SD = 0.003; v4 Mahalanobis: SD = 0.006), and the relative ordering of estimators was consistent across seeds. Under calibration contamination (10% and 30%), the results were identical across seeds (SD = 0.000), indicating that the contamination effects are deterministic with respect to seed. These findings confirm that the patterns reported in Sections 3.1 are not contingent on the specific seed 20260509.
-
-*Table 4. Multi‑seed sensitivity: distribution of $r_{\text{burden}}$ across 10 seeds for five estimators under three critical conditions. Values are mean ± SD [range].*
-
-| Condition              | Traditional               | MA‑residual                | v3 $\sigma_E$              | v4 $\sigma_{\text{calib}}$ | v4 Mahalanobis             |
-|------------------------|---------------------------|----------------------------|----------------------------|----------------------------|----------------------------|
-| Primary                | 0.901 ± 0.002 [0.899, 0.903] | 0.656 ± 0.010 [0.641, 0.674] | 0.948 ± 0.002 [0.944, 0.950] | 0.946 ± 0.003 [0.941, 0.950] | 0.951 ± 0.006 [0.941, 0.960] |
-| Contamination 10%      | 0.048 ± 0.000 [0.048, 0.048] | −0.842 ± 0.000 [−0.842, −0.842] | 0.620 ± 0.000 [0.620, 0.620] | 0.893 ± 0.000 [0.893, 0.893] | 0.601 ± 0.000 [0.601, 0.601] |
-| Contamination 30%      | 0.084 ± 0.000 [0.084, 0.084] | −0.831 ± 0.000 [−0.831, −0.831] | 0.859 ± 0.000 [0.859, 0.859] | 0.938 ± 0.000 [0.938, 0.938] | 0.880 ± 0.000 [0.880, 0.880] |
-
 ---
 
 ## 4. Discussion
@@ -191,7 +175,7 @@ The independent behavioral target provides a unique perspective on the *meaningf
 
 ### 4.4 Limitations
 
-Several limitations must be acknowledged. First, all data are synthetic; the generative model, while realistic in structure, may not capture the full complexity of human physiology. Real‑world validation in datasets such as NHANES accelerometry or Whitehall II wrist recordings is essential. Second, we did not implement multi‑domain biomarker composites (Karlamangla et al., 2014; Cohen et al., 2013) since they require neuroendocrine, cardiovascular, metabolic, and inflammatory biomarkers not modelled in our 5‑channel accelerometric framework. Head‑to‑head comparison with those established AL indices is left to follow‑up work. Third, the 5‑channel framework may not capture the full dimensionality of real wrist accelerometers, which can derive many more features (e.g., entropy, fractal scaling, frequency bands). Fourth, the behavioral surrogate, while independent, is still a constructed variable; real clinical outcomes (e.g., cortisol dysregulation, cardiovascular events) will have unknown true correlation ceilings. Fifth, our stressor model is impulsive Gaussian; sustained chronic stress (gradual accumulation over months) was not tested, and it remains unknown how these estimators perform under non‑stationary, long‑term load. Finally, the study originally used a single pre‑registered seed; while the code is deterministic and the sample size ($n=200$) gives stable bootstrap intervals, a multi‑seed sensitivity analysis would further strengthen generalisability. To address this, we conducted a multi‑seed sensitivity analysis (10 seeds; see Methods and Table 4). The standard deviations across seeds were minimal in primary conditions (e.g., v4 $\sigma_{\text{calib}}$: SD = 0.003; v4 Mahalanobis: SD = 0.006) and zero under contamination, confirming that the results are robust and not contingent on the specific seed. This post‑hoc exploratory analysis corroborates the registered findings.
+Several limitations must be acknowledged. First, all data are synthetic; the generative model, while realistic in structure, may not capture the full complexity of human physiology. Real‑world validation in datasets such as NHANES accelerometry or Whitehall II wrist recordings is essential. Second, we did not implement multi‑domain biomarker composites (Karlamangla et al., 2014; Cohen et al., 2013) since they require neuroendocrine, cardiovascular, metabolic, and inflammatory biomarkers not modelled in our 5‑channel accelerometric framework. Head‑to‑head comparison with those established AL indices is left to follow‑up work. Third, the 5‑channel framework may not capture the full dimensionality of real wrist accelerometers, which can derive many more features (e.g., entropy, fractal scaling, frequency bands). Fourth, the behavioral surrogate, while independent, is still a constructed variable; real clinical outcomes (e.g., cortisol dysregulation, cardiovascular events) will have unknown true correlation ceilings. Fifth, our stressor model is impulsive Gaussian; sustained chronic stress (gradual accumulation over months) was not tested, and it remains unknown how these estimators perform under non‑stationary, long‑term load. Finally, the study uses a single pre‑registered seed; while the code is deterministic and the sample size ($n=200$) gives stable bootstrap intervals, a multi‑seed sensitivity analysis would further strengthen generalisability.The full protocol, including all sensitivity conditions and decision rules, is deposited at the OSF registration [1].
 
 ### 4.5 Practical Recommendations
 
@@ -235,8 +219,6 @@ We have introduced and evaluated Ze‑AL v4, a family of predictive‑coding‑i
 ## 7. Code & Data Availability
 
 **Pre‑registration and reproducibility.** This Stage-0 simulation was pre‑registered with hash-anchored OSF timestamp on 2026-05-09 09:08 UTC+4 (Registration DOI: 10.17605/OSF.IO/75W9D; URL: https://osf.io/75w9d). The local protocol document (OSF_PREREG.md) was first locked at file timestamp 2026-05-09 05:36:12 UTC+4, prior to all production runs (results saved at 2026-05-09 ~07:13 UTC+4 — 1h37m after local lock). The OSF registration converts the local file timestamp into an externally-verifiable hash-anchored ISO 8601 timestamp managed by the Center for Open Science. The registration form documents all hypotheses, estimators, sensitivity conditions, decision rules, and bias-mitigation strategy and is permanently immutable. Code is publicly available at https://github.com/djabbat/Ze-AL-v4-public (CC0 1.0; deterministic with seed=20260509).
-
-**Multi‑seed sensitivity disclosure.** The multi‑seed sensitivity analysis (10 seeds) was added post‑hoc to the OSF Stage‑0 registration (DOI 10.17605/OSF.IO/75W9D) in response to peer review (Red Team v8). It is explicitly classified as exploratory; the original single‑seed registered protocol stands, and the multi‑seed extension confirms (rather than contradicts) the registered findings.
 
 All simulation code, generated data, and analysis pipelines are publicly available at https://github.com/djabbat/Ze-AL-v4-public under the CC0 1.0 license (no rights reserved). The Stage-0 OSF registration is at https://osf.io/75w9d (DOI: 10.17605/OSF.IO/75W9D). The full simulation can be reproduced bit-identically by anyone with a modern Linux/macOS workstation and Python ≥ 3.10:
 
