@@ -1,7 +1,14 @@
-# Ze-AL v4 — Stage 0 Simulation
+# Ze-AL v4 — Stage-0 Simulation
+
+[![OSF](https://img.shields.io/badge/OSF-rpxg8-blue)](https://osf.io/rpxg8)
+[![License: CC0](https://img.shields.io/badge/License-CC0-lightgrey)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+**OSF Project**: https://osf.io/rpxg8
+**OSF Pre-registration**: archiving (DOI to be inserted)
+**Code**: https://github.com/djabbat/Ze-AL-v4-public
 
 Pre-registered v4 simulation, derived from the v3 negative-finding paper
-(`~/Desktop/Ze-Allostasis-v3.md`).
+(in preparation).
 
 ## Hypothesis (locked before run)
 

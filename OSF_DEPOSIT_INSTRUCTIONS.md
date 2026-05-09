@@ -54,7 +54,7 @@ This creates a permanent, immutable, hash-anchored timestamp. Once registered, y
 
 1. Project page → **+ Add component** → **Code**
 2. Title: `Ze-AL-v4 implementation code`
-3. Add link: **https://github.com/djabbat/Ze-AL-v4-private** (private — reviewers will need access; consider making public OR using Read-Only Sharing in GitHub Settings → Collaborators)
+3. Add link: **https://github.com/djabbat/Ze-AL-v4-public** (private — reviewers will need access; consider making public OR using Read-Only Sharing in GitHub Settings → Collaborators)
 4. Save
 
 **Alternative**: Use OSF's GitHub integration — Project → Add-ons → GitHub → authorize → link repo.
@@ -118,7 +118,7 @@ the latter showing catastrophic sign reversal of the baseline).
 
 The protocol was pre-registered on OSF (osf.io/[REAL_CODE]) before any
 production run. Code is deterministic with seed=20260509 and publicly
-available at https://github.com/djabbat/Ze-AL-v4-private (reviewers may
+available at https://github.com/djabbat/Ze-AL-v4-public (reviewers may
 request read-only access).
 
 The work was triple-blind audited by the TBPR-article protocol with
@@ -164,7 +164,7 @@ To reach unanimous ACCEPT (50+/55 worst-of-3), would also require:
 
 ## Quick GitHub setup status
 
-- ✅ Repo created: https://github.com/djabbat/Ze-AL-v4-private (private)
+- ✅ Repo created: https://github.com/djabbat/Ze-AL-v4-public (private)
 - ✅ Initial commit: 6fae3cf9 (33 files, ~280 KB)
 - ✅ Branch: main
 - ✅ Default remote: origin (ssh)
