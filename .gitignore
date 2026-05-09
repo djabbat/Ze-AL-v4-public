@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.log
+results/raw_rows.json
+.DS_Store
+*.tmp
